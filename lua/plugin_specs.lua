@@ -556,33 +556,6 @@ local plugin_specs = {
     },
   },
   {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    dependencies = {
-      { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
-    },
-    opts = {
-      debug = true, -- Enable debugging
-      -- See Configuration section for rest
-    },
-    cmd = { "CopilotChat" },
-  },
-  {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    config = function()
-      require("copilot").setup {}
-    end,
-  },
-  {
-    "smjonas/live-command.nvim",
-    -- live-command supports semantic versioning via Git tags
-    -- tag = "2.*",
-    event = "VeryLazy",
-    config = function()
-      require("config.live-command")
-    end,
-  },
-  {
     -- show hint for code actions, the user can also implement code actions themselves,
     -- see discussion here: https://github.com/neovim/neovim/issues/14869
     "kosayoda/nvim-lightbulb",
@@ -601,6 +574,53 @@ local plugin_specs = {
     opts = { -- set to setup table
     },
   },
+  {
+    "mason-org/mason.nvim",
+    opts = {},
+  },
+  -- {
+  --   "mason-org/mason-lspconfig.nvim",
+  --   opts = {},
+  --   dependencies = {
+  --       { "mason-org/mason.nvim", opts = {} },
+  --       "neovim/nvim-lspconfig",
+  --   },
+  -- },
+  {
+    'mrcjkb/rustaceanvim',
+    version = '^6',
+    lazy = false,
+  },
+  {
+    "zaldih/themery.nvim",
+    lazy = false,
+    config = function()
+      require("themery").setup({
+        -- add the config here
+      })
+    end,
+  },
+    {
+        "andrewferrier/wrapping.nvim",
+        config = function()
+            require("wrapping").setup()
+        end
+    },
+    {
+        "Pocco81/auto-save.nvim",
+    },
+  {
+      "xiyaowong/transparent.nvim",
+  },
+    {
+        "smjonas/live-command.nvim",
+        -- live-command supports semantic versioning via Git tags
+        -- tag = "2.*",
+        event = "VeryLazy",
+        config = function()
+        require("config.live-command")
+        end,
+    },
   {
     "stevearc/quicker.nvim",
     event = "FileType qf",
