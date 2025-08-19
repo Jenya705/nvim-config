@@ -379,6 +379,7 @@ local plugin_specs = {
       require("config.gitsigns")
     end,
     event = "BufRead",
+    version = "*",
   },
 
   {
@@ -620,6 +621,13 @@ local plugin_specs = {
         require("config.live-command")
         end,
     },
+  {
+    "stevearc/quicker.nvim",
+    event = "FileType qf",
+    ---@module "quicker"
+    ---@type quicker.SetupOptions
+    opts = {},
+  },
 }
 
 ---@diagnostic disable-next-line: missing-fields
