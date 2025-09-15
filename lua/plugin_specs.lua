@@ -578,14 +578,10 @@ local plugin_specs = {
     "mason-org/mason.nvim",
     opts = {},
   },
-  -- {
-  --   "mason-org/mason-lspconfig.nvim",
-  --   opts = {},
-  --   dependencies = {
-  --       { "mason-org/mason.nvim", opts = {} },
-  --       "neovim/nvim-lspconfig",
-  --   },
-  -- },
+  {
+    "mason-org/mason-lspconfig.nvim",
+    opts = {},
+  },
   {
     'mrcjkb/rustaceanvim',
     version = '^6',
@@ -628,6 +624,34 @@ local plugin_specs = {
     ---@type quicker.SetupOptions
     opts = {},
   },
+  {
+    "mfussenegger/nvim-dap",
+    config = function()
+        require("config.nvim-dap")
+    end
+  },
+  {
+      "rcarriga/nvim-dap-ui",
+      dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"}
+  },
+  {
+    "theHamsta/nvim-dap-virtual-text",
+    config = function()
+        require('nvim-dap-virtual-text').setup()
+    end
+  },
+  {
+      "jay-babu/mason-nvim-dap.nvim",
+      config = function()
+        require("mason-nvim-dap").setup()
+      end
+  },
+  {
+      "stevearc/overseer.nvim",
+      config = function()
+        require("config.overseer")
+        end
+  }
 }
 
 ---@diagnostic disable-next-line: missing-fields

@@ -5,12 +5,13 @@ set formatoptions-=o
 set formatoptions-=r
 
 nnoremap <silent> <buffer> <F9> :call <SID>compile_run_cpp()<CR>
+nnoremap <silent> <buffer> <F10> :call <SID>run_runcpp()<CR>
 
 function! s:compile_run_cpp() abort
   let src_path = expand('%:p:~')
   let src_noext = expand('%:p:~:r')
   " The building flags
-  let _flag = '-Wall -Wextra -std=c++11 -O2'
+  let _flag = '-Wall -Wextra -std=c++17 -O2'
 
   if executable('clang++')
     let prog = 'clang++'
@@ -22,6 +23,12 @@ function! s:compile_run_cpp() abort
   call s:create_term_buf('h', 20)
   execute printf('term %s %s %s -o %s && %s', prog, _flag, src_path, src_noext, src_noext)
   startinsert
+endfunction
+
+function! s:run_runcpp() abort
+    call s:create_term_buf('h', 20)
+    execute printf('term ./runcpp')
+    startinsert
 endfunction
 
 function s:create_term_buf(_type, size) abort

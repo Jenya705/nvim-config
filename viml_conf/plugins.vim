@@ -225,4 +225,4 @@ if exists('g:started_by_firenvim') && g:started_by_firenvim
 endif
 
 """"""""""""""""""""""""""""""nvim-gdb settings""""""""""""""""""""""""""""""
-nnoremap <leader>dp :<C-U>GdbStartPDB python -m pdb %<CR>
+" nnoremap <leader>dp :<C-U>GdbStartPDB python -m pdb %<CR>
