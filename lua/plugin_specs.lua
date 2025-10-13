@@ -149,7 +149,7 @@ local plugin_specs = {
   { "miikanissi/modus-themes.nvim", priority = 1000 },
   { "wtfox/jellybeans.nvim", priority = 1000 },
   { "projekt0n/github-nvim-theme", name = "github-theme" },
-  { "e-ink-colorscheme/e-ink.nvim", priority = 1000 },
+  -- { "e-ink-colorscheme/e-ink.nvim", priority = 1000 },
   { "ficcdaf/ashen.nvim", priority = 1000 },
   { "savq/melange-nvim", priority = 1000 },
   { "Skardyy/makurai-nvim", priority = 1000 },
@@ -576,7 +576,7 @@ local plugin_specs = {
   },
   {
     "mason-org/mason.nvim",
-    opts = {},
+    opts = { ensure_installed = { "tree-sitter-cli" }, },
   },
   {
     "mason-org/mason-lspconfig.nvim",
@@ -651,7 +651,37 @@ local plugin_specs = {
       config = function()
         require("config.overseer")
         end
-  }
+  },
+  {
+      "mfussenegger/nvim-jdtls",
+  },
+  {
+      "jbyuki/nabla.nvim",
+      dependencies = {
+          "nvim-neo-tree/neo-tree.nvim",
+          "williamboman/mason.nvim",
+      },
+      lazy = true,
+
+      config = function()
+          require("nvim-treesitter.configs").setup({
+              ensure_installed = { "latex" },
+              auto_install = true,
+              sync_install = false,
+          })
+      end,
+
+      keys = function()
+          return {
+              {
+                  "<leader>l",
+                  ':lua require("nabla").popup()<cr>',
+                  desc = "NablaPopUp",
+              },
+          }
+      end,
+      ft={"tex"},
+  },
 }
 
 ---@diagnostic disable-next-line: missing-fields

@@ -130,6 +130,9 @@ keymap.set("x", "c", '"_c')
 -- Remove trailing whitespace characters
 keymap.set("n", "<leader><space>", "<cmd>StripTrailingWhitespace<cr>", { desc = "remove trailing space" })
 
+-- Remove \r characters
+keymap.set("n", "<leader><Bslash>r", ":%s/\\%x0d//g", { desc = "remove all \\r" })
+
 -- Copy entire buffer.
 keymap.set("n", "<leader>y", "<cmd>%yank<cr>", { desc = "yank entire buffer" })
 
