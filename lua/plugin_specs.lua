@@ -741,6 +741,15 @@ local plugin_specs = {
   {
     "mason-org/mason-lspconfig.nvim",
     opts = {},
+    config=function()
+        require("mason-lspconfig").setup {
+            automatic_enable = {
+                exclude = {
+                    "rust_analyzer",
+                },
+            },
+        }
+    end
   },
   {
     'mrcjkb/rustaceanvim',
