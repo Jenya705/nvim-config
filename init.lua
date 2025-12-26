@@ -13,7 +13,7 @@ vim.loader.enable()
 
 local utils = require("utils")
 
-local expected_version = "0.11.3"
+local expected_version = "0.11.5"
 utils.is_compatible_version(expected_version)
 
 local config_dir = vim.fn.stdpath("config")
@@ -27,8 +27,9 @@ vim.cmd("source " .. vim.fs.joinpath(config_dir, "viml_conf/options.vim"))
 require("custom-autocmd")
 -- all the user-defined mappings
 require("mappings")
+
 -- all the plugins installed and their configurations
-vim.cmd("source " .. vim.fs.joinpath(config_dir, "viml_conf/plugins.vim"))
+require("plugin_specs")
 
 -- diagnostic related config
 require("diagnostic-conf")
